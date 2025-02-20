@@ -2,4 +2,6 @@
 
 Original code: Nicola Cerioli
 
-Revision: extract trees method
+Update: 
+- extract trees method
+- trees panel control
