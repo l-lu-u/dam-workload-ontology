@@ -1,17 +1,19 @@
 function drawTrees(trees) {
     const treesGallery = d3.select("body").append("div").attr("id","trees").style("transform","")
     
-    treesGallery.append("div").attr("id","show")
-    .on("click",function(){
-        d3.selectAll(".treeCanvas").style("display","block")
-    })
+    // treesGallery.append("div").attr("id","show")
+    // .on("click",function(){
+    //     d3.selectAll(".treeCanvas").style("display","block")
+    // })
     
-    treesGallery.append("div").attr("id","close")
+    treesGallery.append("div").attr("id","control")
     .on("click",function(){
-        console.log(this.parentNode.style.transform)
-        d3.select(this.parentNode).style("transform",function(){
-            
-            return this.style.transform===""?"translate(0px,110px)":""})
+        const control = d3.select(this);
+        const panel = d3.select(this.parentNode);
+        const isExpanded = control.classed("expanded");
+        const currentTransform = panel.style("transform");
+        panel.style("transform", isExpanded ? "" : "translate(0px,110px)");
+        control.classed("expanded", !isExpanded);
     })
     trees.forEach(tree => {
         

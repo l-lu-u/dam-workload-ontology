@@ -11,11 +11,16 @@
     <style>
         body{
             overflow-x: hidden;
+            margin: 0;
         }
         #main{
             overflow: visible;
             width: 100vw;
             height: 100vh;
+            display: flex;
+        }
+        #main:active{
+            cursor: grab;
         }
         #trees{
             position: fixed;
@@ -24,25 +29,29 @@
             height: 20%;
             background-color: aliceblue;
             display: flex;
-            overflow-y: scroll;
+            overflow: scroll;
+            transition: transform 0.3s ease;
         }
-        #close,#show{
+        #control, #close,#show{
             position: relative;
-            top:0;
-            width: 20px;
-            height: 20px;
-            background-color: black;
-            padding: 10px;
-            cursor: pointer;
-        }
-        #show{
-            background-color: blue;
-        }
-        #close::before{
-            content: "X";
             color: white;
             font-family: sans-serif;
             text-align: center;
+            top:0;
+            width: 20px;
+            height: 20px;
+            background-color: blue;
+            padding: 10px;
+            cursor: pointer;
+        }
+        #control:hover{
+            background-color: black;
+        }
+        #control::before{
+            content: "\2193";
+        }
+        #control.expanded::before{
+            content: "\2191";
         }
         line {
         stroke: #ccc;
@@ -67,8 +76,9 @@
             text-anchor: start;
             transition: .3s ease-out;
         }
-        .node:hover text{
-            font-size: 12px;
+        .node text:hover{
+            font-size: 16px;
+            fill: blue;
         }
         #arrow{
             fill: rgb(174, 172, 172);
