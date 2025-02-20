@@ -1,5 +1,7 @@
 //////* REVISION *//////
-// a stack-based approach to process nodes iteratively instead of recursively
+// What changed: ways to process nodes
+// Previous: Recursion
+// New: Explicit stakc (array) iteration
 function trees(graph) {
     const adjacencyList = {};
     graph.forEach(({ source, target }) => {
